@@ -1,0 +1,157 @@
+			Angular
+
+1. Data Binding
+	we can achieve data binding in  6 ways.
+	
+i. String Interpolation.
+ii. Property Binding
+iii. Class Binding
+iv. Style Binding
+V. Event Binding
+VI. Two way Data Binding
+
+i. String Interpolation.
+
+     	 {{variable/ expression/function call }}
+
+ii. Property Binding
+	
+	ts – isdiasbled = true
+
+	html -- <button  [disabled] = isdisabled>submit</button>
+  
+	in html disabled is the property, isdisabled is from ts.
+
+iii. Class Binding
+
+<h1 [class] = “isActive?’active’:’inactive’”> This is class binding </h1>
+		
+<h1 [class] = “{active : isActive, inactive : isInactive}”> This is class binding </h1>
+
+<h1 [class] = “[’active’, ’inactive’]”> This is class binding </h1>
+
+<h1 [class.active] = isActive> This is class binding </h1>
+
+iv. Style Binding
+
+- one way data binding,
+
+- sets inline styles of an element dynamic based on model.ts file.
+
+Syntax: [style]={property : var1}
+	   [style.property ] = var1
+
+<h1 style = ”color : green ” > This is Style Binding </h1>
+ 
+<h1 [style] = “color : cvar”>This is Style Binding </h1>
+
+<h1 [style.color]= “cvar”> This is Style Binding </h1>
+
+<h1 [style] = “object from ts”>This is Style Binding </h1>
+
+we can define all style properties in one object and bind to the style property.
+
+
+V. Event Binding
+
+- one way data binding,
+
+- allows to bind data from html to ts
+
+(event) = function in ts 
+
+name: <input type = “text” (input)=”changeName($event)”>
+
+ts:
+ changeName( event : any){
+
+	console.log(event);
+
+	 console.log(event.target);
+
+	console.log(event.target.value);
+
+}
+
+
+VI. Two way Data Binding
+	
+	Syntax = [(ngModel)] = propertyname(variable)
+	
+	city: <input type = “text” [(ngModel)]=”city”>
+	
+	city from ts = {{city}}
+
+ ts: city:string = “Hyderabad”;
+
+- to use ngModel we need to import FormsModule in appModule.ts
+
+
+Directives:
+
+Directives are custom HTML attributes. Which tell the angulatr to change the structure, style or behavior of the DOM eliment.
+
+Types:
+1. Stractural directives
+2. Attribute directives
+3. Component directives
+
+Stractural directives:
+	
+	To change the DOM layout by adding or removing the DOM eliment. 
+
+1. ngIf, 2.ngfor, 3.ngSwitch
+
+
+ngIf:
+
+ts: show:boolean = true;
+
+<h1 *ngIf=”show”> This is ngIf example</h1>
+
+ts: movies = [“RRR”, “Puspa”, “Ega”,”Nani”];
+<table>
+	<tr *ngFor = “let m of movies”>
+
+		<td> {{m}} </td>
+
+	</tr>
+</table>
+
+
+ngSwitch:
+
+Syntax:
+
+<div [ngSwitch] = "">
+	
+	<div  *ngSwitchCase= "value1" >...... </div>
+	<div  *ngSwitchCase= "value2" >...... </div>
+	<div  *ngSwitchDefault>...... </div>
+
+</div>
+
+
+
+Pipes:
+	used to transform the data before displaing it on in the browser.
+
+	pipes takes data as input and format or transform that data to some form.	
+	
+	Syntax: {{ 'Angular' | uppercase}}
+	
+	
+18. Custom Pipes in Angular:
+	ng g p test
+	
+
+19. Template Reference Variable:
+
+		<input type='text' placeholder='enter email' #e>
+		
+		<button (click)=updateEmail(e)> updateEmail </button>
+		
+		{{email}}
+	
+	
+	
